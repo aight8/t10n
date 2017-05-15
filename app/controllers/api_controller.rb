@@ -1,4 +1,5 @@
 require 'json'
+require 'awesome_print'
 
 class ApiController < ApplicationController
   def get_newcomers
@@ -10,5 +11,16 @@ class ApiController < ApplicationController
       record: record_holder.serialize,
       stories: top_growth_rate_stories
     }
+  rescue => e
+    Rails.logger.error e.message
+    Rails.logger.error e.backtrace.join("\n") if e.backtrace
+
+    render json: {
+      error: {
+        type: e.class.to_s,
+        message: e.message,
+      }
+    }
   end
 end
+
