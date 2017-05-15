@@ -1,6 +1,6 @@
 # t10n Server Application
 
-This RoR App provides the API which provides the top 10 stories with the most growth rate.
+This RoR App which provides the top 10 stories with the most growth rate.
 
 ## Initial position
 
