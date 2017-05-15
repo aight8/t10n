@@ -15,17 +15,4 @@ ActiveRecord::Schema.define(version: 20170515044018) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "newcomer_records", force: :cascade do |t|
-    t.integer "item_id"
-    t.string "title"
-    t.integer "points"
-    t.string "author"
-    t.integer "total_comments"
-    t.integer "item_created_at"
-    t.float "growth_rate"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["item_id"], name: "index_newcomer_records_on_item_id", unique: true
-  end
-
 end
