@@ -21,8 +21,6 @@ class StoryCollection
   # Load the newest 500 stories into the collection state
   def load_newest
     ids = @api.fetch_new_story_ids
-    ids = ids.take(220)
-    # ids = ids.take(10)
     load_by_ids ids
   end
 
