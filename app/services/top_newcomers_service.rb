@@ -5,9 +5,7 @@ class TopNewcomersService
 
   private def save_record_holder(story)
     unless story.kind_of?(Story)
-      print 'TopNewcomersService::save_record_holder: requires a Story object.'
-      print story.inspect
-      return
+      raise 'TopNewcomersService::save_record_holder: requires a Story object.'
     end
 
     newcomer_record = NewcomerRecord.order('created_at').last
@@ -40,7 +38,9 @@ class TopNewcomersService
     story_collection.load_newest
     sorted_story_collection = story_collection.stories_sorted_by_growth_rate.take(10)
 
-    save_record_holder(sorted_story_collection.first)
+    if sorted_story_collection.size > 0
+      save_record_holder(sorted_story_collection.first)
+    end
 
     sorted_story_collection.map { |story| story.serialize }
   end
