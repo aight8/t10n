@@ -48,7 +48,7 @@ class Story
     set_fields fields
     @points_at_times = []
 
-    add_points_at_time fields[:points]
+    append_points_at_time @points
   end
 
   def set_fields(fields)
@@ -63,13 +63,15 @@ class Story
   def merge(story)
     raise "It's only possible to merge stories with the same ID." unless story.id == @id
     set_fields story
-    add_points_at_time fields[:points]
+    append_points_at_time @points
   end
 
-  def add_points_at_time(points, time = nil)
+  # Append the "points at time" list which contains point amounts at a specific time of this story
+  def append_points_at_time(points, time = nil)
     @points_at_times.push PointsAtTime.new(points, time)
   end
 
+  # Returns the growth rate (unit: points/s)
   def growth_rate
     last = @points_at_times.last
     last.points.to_f / lifetime.to_f
