@@ -1,4 +1,4 @@
-# A snapshot which the amount of points at the given time
+# A snapshot which contains the amount of points at the given time
 class PointsAtTime
   attr_accessor :points
   attr_accessor :time
