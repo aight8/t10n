@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby File.read('.ruby-version').strip
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -23,11 +24,12 @@ gem 'puma', '~> 3.7'
 # gem 'capistrano-rails', group: :development
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
+gem 'rack-cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 3.6.0'
 end
 
 group :development do
@@ -39,3 +41,9 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Custom gems
+gem 'ruby_dep', '~> 1.3'
+gem 'faraday', '0.12.1'
+gem 'faraday_middleware', '0.11.0.1'
+gem 'em-http-request', '~> 1.1.5'
